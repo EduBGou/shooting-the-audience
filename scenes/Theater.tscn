@@ -1,11 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://b743stvtaptpu"]
+[gd_scene load_steps=5 format=3 uid="uid://b743stvtaptpu"]
 
+[ext_resource type="Script" path="res://scripts/Theater.cs" id="1_3t5nv"]
+[ext_resource type="PackedScene" uid="uid://bgidv86ng0yxg" path="res://scenes/UI/GameplayUI.tscn" id="1_xjjcl"]
+[ext_resource type="PackedScene" uid="uid://cwoxi7ahrhjfr" path="res://scenes/preys/Koala.tscn" id="2_1j0qy"]
 [ext_resource type="PackedScene" uid="uid://ci5g6y2gh82gc" path="res://scenes/Aim.tscn" id="2_e5ssn"]
-[ext_resource type="PackedScene" uid="uid://cl87aot68n8k" path="res://scenes/Prey.tscn" id="2_h1r24"]
 
 [node name="Theater" type="Node2D"]
+script = ExtResource("1_3t5nv")
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="GameplayUI" parent="UI" instance=ExtResource("1_xjjcl")]
+
+[node name="Koala" parent="." instance=ExtResource("2_1j0qy")]
+position = Vector2(203, 126)
 
 [node name="Aim" parent="." instance=ExtResource("2_e5ssn")]
-
-[node name="Prey" parent="." instance=ExtResource("2_h1r24")]
-position = Vector2(140, 135)

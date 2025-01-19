@@ -17,7 +17,6 @@ public partial class Aim : Area2D
         Position = GetGlobalMousePosition();
     }
 
-
     public override void _Input(InputEvent @event)
     {
         base._Input(@event);

@@ -15,10 +15,15 @@ run/main_scene="res://scenes/Theater.tscn"
 config/features=PackedStringArray("4.3", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+GlobalEvents="*res://scripts/GlobalEvents.cs"
+GlobalVars="*res://scripts/GlobalVars.cs"
+
 [display]
 
-window/size/viewport_width=480
-window/size/viewport_height=270
+window/size/viewport_width=360
+window/size/viewport_height=203
 window/size/mode=3
 window/stretch/mode="viewport"
 
@@ -30,3 +35,7 @@ project/assembly_name="Shooting the Audience"
 
 2d_physics/layer_1="Aim"
 2d_physics/layer_2="Target"
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0
