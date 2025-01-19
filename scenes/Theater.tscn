@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://b743stvtaptpu"]
+
+[ext_resource type="PackedScene" uid="uid://ci5g6y2gh82gc" path="res://scenes/Aim.tscn" id="2_e5ssn"]
+[ext_resource type="PackedScene" uid="uid://cl87aot68n8k" path="res://scenes/Prey.tscn" id="2_h1r24"]
+
+[node name="Theater" type="Node2D"]
+
+[node name="Aim" parent="." instance=ExtResource("2_e5ssn")]
+
+[node name="Prey" parent="." instance=ExtResource("2_h1r24")]
+position = Vector2(140, 135)
