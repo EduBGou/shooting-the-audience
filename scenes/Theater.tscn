@@ -1,18 +1,31 @@
-[gd_scene load_steps=5 format=3 uid="uid://b743stvtaptpu"]
+[gd_scene load_steps=7 format=3 uid="uid://b743stvtaptpu"]
 
 [ext_resource type="Script" path="res://scripts/Theater.cs" id="1_3t5nv"]
 [ext_resource type="PackedScene" uid="uid://bgidv86ng0yxg" path="res://scenes/UI/GameplayUI.tscn" id="1_xjjcl"]
+[ext_resource type="Texture2D" uid="uid://s15vsbb066em" path="res://sprite/scenario/Scene-Test.png" id="2_0q4mv"]
 [ext_resource type="PackedScene" uid="uid://cwoxi7ahrhjfr" path="res://scenes/preys/Koala.tscn" id="2_1j0qy"]
-[ext_resource type="PackedScene" uid="uid://ci5g6y2gh82gc" path="res://scenes/Aim.tscn" id="2_e5ssn"]
+[ext_resource type="PackedScene" uid="uid://ci5g6y2gh82gc" path="res://scenes/Crosshair.tscn" id="2_e5ssn"]
+[ext_resource type="Texture2D" uid="uid://ctroemhxlmuqg" path="res://sprite/scenario/Seat.png" id="6_j8xfn"]
 
 [node name="Theater" type="Node2D"]
 script = ExtResource("1_3t5nv")
 
+[node name="Scene-test" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(180, 101)
+texture = ExtResource("2_0q4mv")
+
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="GameplayUI" parent="UI" instance=ExtResource("1_xjjcl")]
+metadata/_edit_lock_ = true
 
 [node name="Koala" parent="." instance=ExtResource("2_1j0qy")]
-position = Vector2(203, 126)
+position = Vector2(71, 90)
 
 [node name="Aim" parent="." instance=ExtResource("2_e5ssn")]
+
+[node name="Seat" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(71, 103)
+texture = ExtResource("6_j8xfn")

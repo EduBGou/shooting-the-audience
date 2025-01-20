@@ -1,12 +1,19 @@
+
 using System.Collections.Generic;
 using Godot;
+using GlobalEnums;
 
-public partial class Aim : Area2D
+public partial class Crosshair : Area2D
 {
     public List<Prey> Preys = new();
+    public Sprite2D Sprite { get; set; }
+    public EColor eColor = EColor.Red;
+
     public override void _Ready()
     {
         base._Ready();
+        Sprite = GetNode<Sprite2D>(nameof(Sprite));
+
         AreaEntered += OnAreaEntered;
         AreaExited += OnAreaExited;
     }
@@ -15,6 +22,16 @@ public partial class Aim : Area2D
     {
         base._Process(delta);
         Position = GetGlobalMousePosition();
+
+        #region Configure the Aim Color
+
+        var imgDir = $"res://sprite/crosshair/{eColor}.png";
+        if (FileAccess.FileExists(imgDir))
+        {
+            var newTexture = ResourceLoader.Load<Texture2D>(imgDir);
+            Sprite.Texture = newTexture ?? Sprite.Texture;
+        }
+        #endregion
     }
 
     public override void _Input(InputEvent @event)
@@ -23,9 +40,20 @@ public partial class Aim : Area2D
         if (@event is InputEventMouseButton mouseEvent && mouseEvent.Pressed)
         {
             if (Preys.Count > 0)
-            {
                 Preys[0].Dead();
-            }
+        }
+
+        // Change the Crosshair color by Input
+        if (@event is InputEventKey keyEvent && keyEvent.Pressed)
+        {
+            eColor = keyEvent.KeyLabel switch
+            {
+                Key.Key1 => EColor.Red,
+                Key.Key2 => EColor.Green,
+                Key.Key3 => EColor.Blue,
+                Key.Key4 => EColor.Yellow,
+                _ => EColor.Red,
+            };
         }
     }
 

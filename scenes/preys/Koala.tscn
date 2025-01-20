@@ -150,7 +150,6 @@ shape = SubResource("RectangleShape2D_ts31l")
 debug_color = Color(0.765625, 0.311035, 0.70525, 0.42)
 
 [node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, 1)
 sprite_frames = SubResource("SpriteFrames_6j5pj")
-animation = &"crying"
+animation = &"sneaking"
 autoplay = "crying"

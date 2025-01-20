@@ -1,9 +1,19 @@
 using Godot;
 using System;
 
+namespace GlobalEnums
+{
+    public enum EColor
+    {
+        Red, Green, Blue, Yellow
+    }
+}
+
 public partial class GlobalVars : Node
 {
+
     private GlobalEvents GlobalEvents;
+
     private int _coin;
     public int Coins
     {
@@ -16,7 +26,7 @@ public partial class GlobalVars : Node
 
     public override void _Ready()
     {
-        GlobalEvents = GetNode<GlobalEvents>($"/root/{nameof(GlobalEvents)}");
         base._Ready();
+        GlobalEvents = GetNode<GlobalEvents>("/root/" + nameof(GlobalEvents));
     }
 }

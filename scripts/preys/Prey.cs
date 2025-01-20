@@ -1,3 +1,5 @@
+#nullable disable
+
 using Godot;
 using System;
 
@@ -10,7 +12,7 @@ public partial class Prey : Area2D
     public override void _Ready()
     {
         base._Ready();
-        GlobalVars = GetNode<GlobalVars>($"/root/{nameof(GlobalVars)}");
+        GlobalVars = GetNode<GlobalVars>("/root/" + nameof(GlobalVars));
         AnimatedSprite ??= GetNode<AnimatedSprite2D>(nameof(AnimatedSprite));
     }
 
