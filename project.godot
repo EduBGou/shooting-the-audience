@@ -31,6 +31,14 @@ window/stretch/mode="viewport"
 
 project/assembly_name="Shooting the Audience"
 
+[file_customization]
+
+folder_colors={
+"res://scenes/": "purple",
+"res://scripts/": "red",
+"res://sprite/": "yellow"
+}
+
 [input]
 
 num_1={

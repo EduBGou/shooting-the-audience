@@ -1,12 +1,12 @@
-#nullable disable
-
 using Godot;
-using System;
+using GlobalEnums;
 
-public partial class Prey : Area2D
+public partial class Creature : Area2D
 {
     private GlobalVars GlobalVars;
-    public Theater Theater => GetParent<Theater>();
+
+    public EColor eColor;
+
     [Export] public AnimatedSprite2D AnimatedSprite;
 
     public override void _Ready()

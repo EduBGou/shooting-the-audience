@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bdxbq4b7ffvxq"]
+
+[ext_resource type="Script" path="res://scripts/creatures/state/CreatureHidded.cs" id="1_ht683"]
+
+[node name="CreatureHidded" type="Node"]
+script = ExtResource("1_ht683")

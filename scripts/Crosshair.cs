@@ -5,7 +5,7 @@ using GlobalEnums;
 
 public partial class Crosshair : Area2D
 {
-    public List<Prey> Preys = new();
+    public List<Creature> Preys = new();
     public Sprite2D Sprite { get; set; }
     public EColor eColor = EColor.Red;
 
@@ -60,13 +60,13 @@ public partial class Crosshair : Area2D
     #region Adding and Removing areas in/from List "Preys"
     private void OnAreaEntered(Area2D area)
     {
-        if (area is Prey prey)
+        if (area is Creature prey)
             Preys.Add(prey);
     }
 
     private void OnAreaExited(Area2D area)
     {
-        if (area is Prey prey)
+        if (area is Creature prey)
             Preys.Remove(prey);
     }
     #endregion
