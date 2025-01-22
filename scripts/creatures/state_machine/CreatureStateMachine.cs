@@ -10,21 +10,31 @@ public partial class CreatureStateMachine : Node
         Idle, Sneaking, Hidded
     }
 
-    public List<CreatureState> creatureStates = new(3);
+    public List<CreatureState> creatureStates = new();
     public CreatureState currentState;
     [Export] public Creature Creature;
 
     public override void _Ready()
     {
         base._Ready();
+
+        #region Loading, Instantiating and Adding CreatureState Scenes to the List
+
         var eStateValues = Enum.GetValues(typeof(ECreatureState));
         var baseDir = "res://scenes/creatures/states/Creature";
         for (var i = 0; i < eStateValues.Length; i++)
         {
             var path = $"{baseDir}{eStateValues.GetValue(i)}.tscn";
             var stateScn = GD.Load<PackedScene>(path);
-            creatureStates.Add(stateScn.Instantiate<CreatureState>());
+            //Imagino que n esteja chamando o Ready devido ao fato de instanciar como genérico
+            var stateInstc = stateScn.Instantiate<CreatureState>();
+            stateInstc.Creature = Creature;
+            creatureStates.Add(stateInstc);
+            AddChild(stateInstc);
+            GD.Print(creatureStates[0].Name);
         }
+        #endregion
+
         currentState = creatureStates[0];
         currentState.Enter();
     }

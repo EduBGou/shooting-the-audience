@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b1wytcjy8hhdd"
-path="res://.godot/imported/Red.png-355a7eee78ea613ee642adbdc7c4e5f5.ctex"
+uid="uid://s15vsbb066em"
+path="res://.godot/imported/Scene-Test.png-56d89c47a20d35abe958ba417c52f900.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprite/crosshair/Red.png"
-dest_files=["res://.godot/imported/Red.png-355a7eee78ea613ee642adbdc7c4e5f5.ctex"]
+source_file="res://sprites/scenario/Scene-Test.png"
+dest_files=["res://.godot/imported/Scene-Test.png-56d89c47a20d35abe958ba417c52f900.ctex"]
 
 [params]
 

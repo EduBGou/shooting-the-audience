@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b4p01lwgluj83"
-path="res://.godot/imported/Yellow.png-584f88059ab75abcd074ce9744bfea39.ctex"
+uid="uid://c8xqvhuepu1q5"
+path="res://.godot/imported/Red-Sign.png-ab0e03cb6e9d294514bdcf4d30a4453b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprite/crosshair/Yellow.png"
-dest_files=["res://.godot/imported/Yellow.png-584f88059ab75abcd074ce9744bfea39.ctex"]
+source_file="res://sprites/objects/Red-Sign.png"
+dest_files=["res://.godot/imported/Red-Sign.png-ab0e03cb6e9d294514bdcf4d30a4453b.ctex"]
 
 [params]
 

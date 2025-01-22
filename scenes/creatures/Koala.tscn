@@ -1,71 +1,76 @@
-[gd_scene load_steps=22 format=3 uid="uid://cwoxi7ahrhjfr"]
+[gd_scene load_steps=23 format=3 uid="uid://cwoxi7ahrhjfr"]
 
 [ext_resource type="Script" path="res://scripts/creatures/Koala.cs" id="1_7b2cn"]
-[ext_resource type="Texture2D" uid="uid://buar41b62jrfy" path="res://sprite/koala/Crying-Koala-Animation.png" id="2_4kx3b"]
-[ext_resource type="Texture2D" uid="uid://c3r4aow873bq1" path="res://sprite/koala/Koala.png" id="3_k0qm3"]
+[ext_resource type="PackedScene" uid="uid://de4hmfhowmw8y" path="res://scenes/creatures/components/SignComponent.tscn" id="3_j0o2x"]
 [ext_resource type="Script" path="res://scripts/creatures/state_machine/CreatureStateMachine.cs" id="4_bxtbk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ts31l"]
-size = Vector2(18, 24)
+size = Vector2(18, 16)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_wqkxe"]
+load_path = "res://.godot/imported/Crying-Koala-Animation.png-b9f8dcc8a31408f39f2ef1ecbeb1ecb1.ctex"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4h4il"]
-atlas = ExtResource("2_4kx3b")
+atlas = SubResource("CompressedTexture2D_wqkxe")
 region = Rect2(0, 0, 40, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_aohak"]
-atlas = ExtResource("2_4kx3b")
+atlas = SubResource("CompressedTexture2D_wqkxe")
 region = Rect2(40, 0, 40, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dk0r6"]
-atlas = ExtResource("2_4kx3b")
+atlas = SubResource("CompressedTexture2D_wqkxe")
 region = Rect2(80, 0, 40, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6jnf2"]
-atlas = ExtResource("2_4kx3b")
+atlas = SubResource("CompressedTexture2D_wqkxe")
 region = Rect2(120, 0, 40, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kcby2"]
-atlas = ExtResource("2_4kx3b")
+atlas = SubResource("CompressedTexture2D_wqkxe")
 region = Rect2(160, 0, 40, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_401bh"]
-atlas = ExtResource("2_4kx3b")
+atlas = SubResource("CompressedTexture2D_wqkxe")
 region = Rect2(200, 0, 40, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ulsjn"]
-atlas = ExtResource("2_4kx3b")
+atlas = SubResource("CompressedTexture2D_wqkxe")
 region = Rect2(240, 0, 40, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b2ibx"]
-atlas = ExtResource("2_4kx3b")
+atlas = SubResource("CompressedTexture2D_wqkxe")
 region = Rect2(280, 0, 40, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mejo4"]
-atlas = ExtResource("2_4kx3b")
+atlas = SubResource("CompressedTexture2D_wqkxe")
 region = Rect2(320, 0, 40, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_njqn6"]
-atlas = ExtResource("2_4kx3b")
+atlas = SubResource("CompressedTexture2D_wqkxe")
 region = Rect2(360, 0, 40, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_j4lvp"]
-atlas = ExtResource("2_4kx3b")
+atlas = SubResource("CompressedTexture2D_wqkxe")
 region = Rect2(400, 0, 40, 40)
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_mbqnf"]
+load_path = "res://.godot/imported/Koala.png-295811c314f01ae6212b34b93cce86bf.ctex"
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_y7yvq"]
-atlas = ExtResource("3_k0qm3")
+atlas = SubResource("CompressedTexture2D_mbqnf")
 region = Rect2(80, 0, 40, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gj78t"]
-atlas = ExtResource("3_k0qm3")
+atlas = SubResource("CompressedTexture2D_mbqnf")
 region = Rect2(40, 0, 40, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8omwc"]
-atlas = ExtResource("3_k0qm3")
+atlas = SubResource("CompressedTexture2D_mbqnf")
 region = Rect2(120, 0, 40, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mni3h"]
-atlas = ExtResource("3_k0qm3")
+atlas = SubResource("CompressedTexture2D_mbqnf")
 region = Rect2(0, 0, 40, 40)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_6j5pj"]
@@ -141,16 +146,18 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Prey" type="Area2D" node_paths=PackedStringArray("AnimatedSprite")]
+[node name="Prey" type="Area2D" node_paths=PackedStringArray("SignComponent")]
 collision_layer = 2
 script = ExtResource("1_7b2cn")
-AnimatedSprite = NodePath("AnimatedSprite")
+SignComponent = NodePath("SignComponent")
 
 [node name="Collision" type="CollisionShape2D" parent="."]
+position = Vector2(0, -24)
 shape = SubResource("RectangleShape2D_ts31l")
 debug_color = Color(0.765625, 0.311035, 0.70525, 0.42)
 
 [node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -17)
 sprite_frames = SubResource("SpriteFrames_6j5pj")
 animation = &"sneaking"
 autoplay = "crying"
@@ -158,3 +165,5 @@ autoplay = "crying"
 [node name="CreatureStateMachine" type="Node" parent="." node_paths=PackedStringArray("Creature")]
 script = ExtResource("4_bxtbk")
 Creature = NodePath("..")
+
+[node name="SignComponent" parent="." instance=ExtResource("3_j0o2x")]

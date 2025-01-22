@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://byjghm4bslbhk"
-path="res://.godot/imported/Blue.png-184034504d7aee98d5626b4b6f06658c.ctex"
+uid="uid://cbe45jptkgmcr"
+path="res://.godot/imported/Crying-Koala-Animation.png-9a32ac1cacdf2f6db8e6c2859fd2b444.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprite/crosshair/Blue.png"
-dest_files=["res://.godot/imported/Blue.png-184034504d7aee98d5626b4b6f06658c.ctex"]
+source_file="res://sprites/creatures/koala/Crying-Koala-Animation.png"
+dest_files=["res://.godot/imported/Crying-Koala-Animation.png-9a32ac1cacdf2f6db8e6c2859fd2b444.ctex"]
 
 [params]
 

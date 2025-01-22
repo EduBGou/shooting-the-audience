@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c3r4aow873bq1"
-path="res://.godot/imported/Koala.png-a9d51d57ebce53fdb99f7b2c69b3d741.ctex"
+uid="uid://ctroemhxlmuqg"
+path="res://.godot/imported/Seat.png-048f2f78e8e7ce9c793d69ee4950a868.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprite/koala/Koala.png"
-dest_files=["res://.godot/imported/Koala.png-a9d51d57ebce53fdb99f7b2c69b3d741.ctex"]
+source_file="res://sprites/scenario/Seat.png"
+dest_files=["res://.godot/imported/Seat.png-048f2f78e8e7ce9c793d69ee4950a868.ctex"]
 
 [params]
 

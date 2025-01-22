@@ -17,5 +17,4 @@ public partial class Theater : Node
 
     }
 
-
 }

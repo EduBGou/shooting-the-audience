@@ -17,8 +17,8 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-GlobalEvents="*res://scripts/GlobalEvents.cs"
-GlobalVars="*res://scripts/GlobalVars.cs"
+GlobalEvents="*res://scripts/globals/GlobalEvents.cs"
+GlobalVars="*res://scripts/globals/GlobalVars.cs"
 
 [display]
 
@@ -36,7 +36,7 @@ project/assembly_name="Shooting the Audience"
 folder_colors={
 "res://scenes/": "purple",
 "res://scripts/": "red",
-"res://sprite/": "yellow"
+"res://sprites/": "yellow"
 }
 
 [input]

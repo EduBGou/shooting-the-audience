@@ -22,16 +22,6 @@ public partial class Crosshair : Area2D
     {
         base._Process(delta);
         Position = GetGlobalMousePosition();
-
-        #region Configure the Aim Color
-
-        var imgDir = $"res://sprite/crosshair/{eColor}.png";
-        if (FileAccess.FileExists(imgDir))
-        {
-            var newTexture = ResourceLoader.Load<Texture2D>(imgDir);
-            Sprite.Texture = newTexture ?? Sprite.Texture;
-        }
-        #endregion
     }
 
     public override void _Input(InputEvent @event)
@@ -46,15 +36,36 @@ public partial class Crosshair : Area2D
         // Change the Crosshair color by Input
         if (@event is InputEventKey keyEvent && keyEvent.Pressed)
         {
-            eColor = keyEvent.KeyLabel switch
-            {
-                Key.Key1 => EColor.Red,
-                Key.Key2 => EColor.Green,
-                Key.Key3 => EColor.Blue,
-                Key.Key4 => EColor.Yellow,
-                _ => EColor.Red,
-            };
+            ChangeEColor(MapKeysToEColor(keyEvent));
         }
+    }
+
+    public void ChangeEColor(EColor newEColor)
+    {
+        var imgDir = $"res://sprites/crosshair/{eColor}.png";
+        if (FileAccess.FileExists(imgDir))
+        {
+            var newTexture = ResourceLoader.Load<Texture2D>(imgDir);
+            Sprite.Texture = newTexture ?? Sprite.Texture;
+        }
+        else
+        {
+            GD.PrintErr($"\"{imgDir}\" -> Don't exists!");
+            return;
+        }
+        eColor = newEColor;
+    }
+
+    public static EColor MapKeysToEColor(InputEventKey keyEvent)
+    {
+        return keyEvent.KeyLabel switch
+        {
+            Key.Key1 => EColor.Red,
+            Key.Key2 => EColor.Green,
+            Key.Key3 => EColor.Blue,
+            Key.Key4 => EColor.Yellow,
+            _ => EColor.Red,
+        };
     }
 
     #region Adding and Removing areas in/from List "Preys"
@@ -70,5 +81,4 @@ public partial class Crosshair : Area2D
             Preys.Remove(prey);
     }
     #endregion
-
 }

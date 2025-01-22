@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bq732iuct284x"
-path="res://.godot/imported/Green.png-a84b49ecf479301311469abed286d81c.ctex"
+uid="uid://gsesp7dqsepx"
+path="res://.godot/imported/Koala.png-56ed8015570350ae4456f053b7b29592.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprite/crosshair/Green.png"
-dest_files=["res://.godot/imported/Green.png-a84b49ecf479301311469abed286d81c.ctex"]
+source_file="res://sprites/creatures/koala/Koala.png"
+dest_files=["res://.godot/imported/Koala.png-56ed8015570350ae4456f053b7b29592.ctex"]
 
 [params]
 

@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://ci5g6y2gh82gc"]
 
 [ext_resource type="Script" path="res://scripts/Crosshair.cs" id="1_ga6ai"]
-[ext_resource type="Texture2D" uid="uid://b1wytcjy8hhdd" path="res://sprite/crosshair/Red.png" id="2_0u7u1"]
+[ext_resource type="Texture2D" uid="uid://b1wytcjy8hhdd" path="res://sprites/crosshair/Red.png" id="2_0u7u1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_01oib"]
 radius = 4.0

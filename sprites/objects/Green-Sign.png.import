@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://buar41b62jrfy"
-path="res://.godot/imported/Crying-Koala-Animation.png-ea86f1fc0ced72228c7489a1d242e1a2.ctex"
+uid="uid://dhffl77qso4nl"
+path="res://.godot/imported/Green-Sign.png-9cf9e0aaa72105adef54752b2a5f01bd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprite/koala/Crying-Koala-Animation.png"
-dest_files=["res://.godot/imported/Crying-Koala-Animation.png-ea86f1fc0ced72228c7489a1d242e1a2.ctex"]
+source_file="res://sprites/objects/Green-Sign.png"
+dest_files=["res://.godot/imported/Green-Sign.png-9cf9e0aaa72105adef54752b2a5f01bd.ctex"]
 
 [params]
 
