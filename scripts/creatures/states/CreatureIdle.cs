@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using GlobalEnums;
 
 public partial class CreatureIdle : CreatureState
 {
@@ -8,7 +9,10 @@ public partial class CreatureIdle : CreatureState
         base.Enter();
         if (Creature.Collision.Disabled)
             Creature.Collision.Disabled = false;
-        Creature.AnimatedSprite.Animation = "appearing";
-        GD.Print("Here");
+
+        Creature.AnimatedSprite.Animation = "rage";
+        Creature.SignComponent.Visible = false;
+        Creature.AnimationPlayer.Play("appearing");
+        
     }
 }

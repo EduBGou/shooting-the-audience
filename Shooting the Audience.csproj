@@ -6,7 +6,4 @@
     <EnableDynamicLoading>true</EnableDynamicLoading>
     <RootNamespace>ShootingtheAudience</RootNamespace>
   </PropertyGroup>
-  <ItemGroup>
-    <Folder Include="scripts\preys\" />
-  </ItemGroup>
 </Project>

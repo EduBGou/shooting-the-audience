@@ -1,5 +1,4 @@
-using Godot;
-using System;
+using GlobalEnums;
 
 public partial class CreatureHidded : CreatureState
 {
@@ -8,6 +7,5 @@ public partial class CreatureHidded : CreatureState
         base.Enter();
         if (!Creature.Collision.Disabled)
             Creature.Collision.Disabled = true;
-        Creature.AnimatedSprite.Animation = "hiding";
     }
 }

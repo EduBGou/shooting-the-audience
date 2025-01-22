@@ -1,6 +1,18 @@
-[gd_scene load_steps=2 format=3 uid="uid://v4ln26do6qe7"]
+[gd_scene load_steps=5 format=3 uid="uid://v4ln26do6qe7"]
 
 [ext_resource type="Script" path="res://scripts/creatures/state_machine/CreatureStateMachine.cs" id="1_5sdar"]
+[ext_resource type="Script" path="res://scripts/creatures/states/CreatureIdle.cs" id="2_v78s4"]
+[ext_resource type="Script" path="res://scripts/creatures/states/CreatureSneaking.cs" id="3_ak4nv"]
+[ext_resource type="Script" path="res://scripts/creatures/states/CreatureHidded.cs" id="4_xd6ok"]
 
 [node name="CreatureStateMachine" type="Node"]
 script = ExtResource("1_5sdar")
+
+[node name="CreatureIdle" type="Node" parent="."]
+script = ExtResource("2_v78s4")
+
+[node name="CreatureSneaking" type="Node" parent="."]
+script = ExtResource("3_ak4nv")
+
+[node name="CreatureHidded" type="Node" parent="."]
+script = ExtResource("4_xd6ok")

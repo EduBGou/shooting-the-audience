@@ -20,8 +20,8 @@ metadata/_edit_lock_ = true
 [node name="GameplayUI" parent="UI" instance=ExtResource("1_xjjcl")]
 metadata/_edit_lock_ = true
 
-[node name="Prey" parent="." instance=ExtResource("5_wunr0")]
-position = Vector2(72, 96)
+[node name="Koala" parent="." instance=ExtResource("5_wunr0")]
+position = Vector2(71, 131)
 
 [node name="Aim" parent="." instance=ExtResource("2_e5ssn")]
 
