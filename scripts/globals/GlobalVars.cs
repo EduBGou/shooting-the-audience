@@ -7,10 +7,6 @@ namespace GlobalEnums
     {
         Red, Green, Blue, Yellow
     }
-    public enum ECreatureState
-    {
-        Idle, Sneaking, Hidded
-    }
 }
 
 public partial class GlobalVars : Node

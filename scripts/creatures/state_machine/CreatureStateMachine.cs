@@ -1,33 +1,26 @@
 using Godot;
 using System.Collections.Generic;
 using System.Linq;
-using GlobalEnums;
-using System;
 
 public partial class CreatureStateMachine : Node
 {
-    public List<CreatureState> creatureStates = new();
+    public Dictionary<CreatureState.EState, CreatureState> creatureStates = new();
     public CreatureState currentState;
     [Export] public Creature Creature;
 
     public override void _Ready()
     {
         base._Ready();
-        Creature.Ready += OnCreatureReady;
 
-        #region Loading, Instantiating and Adding CreatureState Scenes to the List
-        foreach (var child in GetChildren())
+        foreach (var child in GetChildren().Cast<CreatureState>())
         {
-            if (child is CreatureState state)
-            {
-                creatureStates.Add(state);
-                state.Creature = Creature;
-                state.TransitionRequest += OnTransitionRequested;
-                Creature.Ready += state.SetCreatureReadyConfigs;
-            }
+            creatureStates[child.State] = child;
+            child.Creature = Creature;
+            child.StateTransition += OnStateTransition;
         }
-        #endregion
-        currentState = MapEnumToNodeOfCreatureState(ECreatureState.Hidded);
+
+        currentState = creatureStates[CreatureState.EState.Hidded];
+        Creature.Ready += () => { currentState.Enter(); };
     }
 
     public override void _Process(double delta)
@@ -37,26 +30,20 @@ public partial class CreatureStateMachine : Node
         currentState.Update(delta);
     }
 
-    public void OnTransitionRequested(ECreatureState eCreatureState)
+    public override void _PhysicsProcess(double delta)
     {
-        currentState.Exit();
-        currentState = MapEnumToNodeOfCreatureState(eCreatureState);
-        currentState.Enter();
+        base._PhysicsProcess(delta);
+        if (currentState == null) return;
+        currentState.PhysicsUpdate(delta);
     }
 
-    public CreatureState MapEnumToNodeOfCreatureState(ECreatureState eCreatureState)
+    public void OnStateTransition(CreatureState from, CreatureState.EState to)
     {
-        return eCreatureState switch
-        {
-            ECreatureState.Idle => creatureStates[0],
-            ECreatureState.Sneaking => creatureStates[1],
-            ECreatureState.Hidded => creatureStates[2],
-            _ => creatureStates[2],
-        };
-    }
-
-    private void OnCreatureReady()
-    {
+        if (from != currentState) return;
+        var newState = creatureStates[to];
+        if (newState == null) return;
+        currentState?.Exit();
+        currentState = newState;
         currentState.Enter();
     }
 }

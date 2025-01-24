@@ -1,18 +1,38 @@
 using Godot;
-using System;
-using GlobalEnums;
 
 public partial class CreatureIdle : CreatureState
 {
+    public double idleTime;
     public override void Enter()
     {
         base.Enter();
-        if (Creature.Collision.Disabled)
-            Creature.Collision.Disabled = false;
-
-        Creature.AnimatedSprite.Animation = "rage";
+        Creature.Collision.Disabled = false;
         Creature.SignComponent.Visible = false;
-        Creature.AnimationPlayer.Play("appearing");
-        
+        Creature.AnimatedSprite.Animation = "rage";
+        AppearingTween();
+    }
+
+    public override void PhysicsUpdate(double delta)
+    {
+        base.PhysicsUpdate(delta);
+        idleTime = DescontTimeOf(idleTime, delta, () =>
+        {
+            DisappearingTween();
+        });
+    }
+
+    public override void OnTweenFinished()
+    {
+        base.OnTweenFinished();
+        switch (TweenAction)
+        {
+            case ETweenAction.Appearing:
+                idleTime = 4;
+                break;
+
+            case ETweenAction.Disappearing:
+                ChangeToState(EState.Hidded);
+                break;
+        }
     }
 }

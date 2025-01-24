@@ -3,12 +3,15 @@ using GlobalEnums;
 
 public partial class Creature : Area2D
 {
-    private GlobalVars GlobalVars;
+    [Export] public SignComponent SignComponent;
+
     public CollisionShape2D Collision { get; set; }
     public AnimatedSprite2D AnimatedSprite { get; set; }
-    public AnimationPlayer AnimationPlayer { get; set; }
-    [Export] public SignComponent SignComponent;
-    public EColor EColor;
+
+    public EColor EColor { get; set; }
+    public Tween Tween { get; set; }
+
+    private GlobalVars GlobalVars;
 
     public override void _Ready()
     {
@@ -16,7 +19,11 @@ public partial class Creature : Area2D
         GlobalVars = GetNode<GlobalVars>("/root/" + nameof(GlobalVars));
         Collision = GetNode<CollisionShape2D>(nameof(Collision));
         AnimatedSprite = GetNode<AnimatedSprite2D>(nameof(AnimatedSprite));
-        AnimationPlayer = GetNode<AnimationPlayer>(nameof(AnimationPlayer));
+    }
+
+    public override void _PhysicsProcess(double delta)
+    {
+        base._PhysicsProcess(delta);
     }
 
     public void Dead()

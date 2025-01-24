@@ -42,7 +42,7 @@ public partial class Crosshair : Area2D
 
     public void ChangeEColor(EColor newEColor)
     {
-        var imgDir = $"res://sprites/crosshair/{eColor}.png";
+        var imgDir = $"res://sprites/crosshair/{newEColor}.png";
         if (FileAccess.FileExists(imgDir))
         {
             var newTexture = ResourceLoader.Load<Texture2D>(imgDir);

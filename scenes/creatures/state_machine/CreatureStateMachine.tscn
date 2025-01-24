@@ -13,6 +13,8 @@ script = ExtResource("2_v78s4")
 
 [node name="CreatureSneaking" type="Node" parent="."]
 script = ExtResource("3_ak4nv")
+State = 1
 
 [node name="CreatureHidded" type="Node" parent="."]
 script = ExtResource("4_xd6ok")
+State = 2

@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://cwoxi7ahrhjfr"]
+[gd_scene load_steps=23 format=3 uid="uid://cwoxi7ahrhjfr"]
 
 [ext_resource type="Script" path="res://scripts/creatures/Koala.cs" id="1_7b2cn"]
 [ext_resource type="PackedScene" uid="uid://de4hmfhowmw8y" path="res://scenes/creatures/components/SignComponent.tscn" id="3_j0o2x"]
@@ -6,130 +6,6 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ts31l"]
 size = Vector2(18, 16)
-
-[sub_resource type="Animation" id="Animation_cdbua"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Collision:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, -24)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("AnimatedSprite:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, -17)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("SignComponent:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_kxscl"]
-resource_name = "disappearing"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Collision:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0, -24), Vector2(0, -48)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("AnimatedSprite:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0, -17), Vector2(0, -41)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("SignComponent:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(0, -24)]
-}
-
-[sub_resource type="Animation" id="Animation_wj72a"]
-resource_name = "appearing_2"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Collision:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0, -48), Vector2(0, -24)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("AnimatedSprite:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0, -41), Vector2(0, -17)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("SignComponent:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0, -24), Vector2(0, 0)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_eieo3"]
-_data = {
-"RESET": SubResource("Animation_cdbua"),
-"appearing": SubResource("Animation_kxscl"),
-"disappearing": SubResource("Animation_wj72a")
-}
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_wqkxe"]
 load_path = "res://.godot/imported/Crying-Koala-Animation.png-b9f8dcc8a31408f39f2ef1ecbeb1ecb1.ctex"
@@ -280,11 +156,6 @@ position = Vector2(0, -24)
 shape = SubResource("RectangleShape2D_ts31l")
 debug_color = Color(0.765625, 0.311035, 0.70525, 0.42)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_eieo3")
-}
-
 [node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -17)
 sprite_frames = SubResource("SpriteFrames_6j5pj")
@@ -292,6 +163,9 @@ animation = &"sneaking"
 autoplay = "crying"
 
 [node name="SignComponent" parent="." instance=ExtResource("3_j0o2x")]
+visible = false
 
 [node name="CreatureStateMachine" parent="." node_paths=PackedStringArray("Creature") instance=ExtResource("3_txa4l")]
 Creature = NodePath("..")
+
+[node name="StateTimer" type="Timer" parent="."]

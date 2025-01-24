@@ -1,33 +1,68 @@
 using Godot;
 using System;
-using GlobalEnums;
 
 [GlobalClass]
 public partial class CreatureState : Node
 {
     [Signal]
-    public delegate void TransitionRequestEventHandler(ECreatureState eCreatureState);
+    public delegate void StateTransitionEventHandler(CreatureState from, EState to);
+    public enum EState { Idle, Sneaking, Hidded }
+    protected enum ETweenAction { Appearing, Disappearing };
 
+    [Export] public EState State { get; set; }
+    protected ETweenAction TweenAction { get; set; }
     public Creature Creature { get; set; }
-    public virtual void Enter()
-    {
-        GD.Print("Enter in State: ", Name);
-    }
+
+
+    public virtual void Enter() { GD.Print("Enter in State: ", Name); }
     public virtual void Update(double delta) { }
+    public virtual void PhysicsUpdate(double delta) { }
     public virtual void Exit() { }
-    public virtual void OnTimerTimeout() { }
 
-    public void ChangeToState(ECreatureState eCreatureState)
+    public virtual void OnTweenFinished() { }
+
+    public void ChangeToState(EState eState)
     {
-        EmitSignal(SignalName.TransitionRequest, Variant.From(eCreatureState));
-
+        if (State == eState) return;
+        EmitSignal(SignalName.StateTransition, this, Variant.From(eState));
     }
 
-    public virtual void OnAnimationPlayerFinishedAnimation(StringName animName) { }
-
-    public void SetCreatureReadyConfigs()
+    public static double DescontTimeOf(double cTime, double delta, Action func)
     {
-        Creature.AnimationPlayer.AnimationFinished += OnAnimationPlayerFinishedAnimation;
+        double retTime = cTime;
+
+        if (retTime > 0)
+            retTime -= delta;
+
+        if (retTime < 0 && retTime != -1)
+        {
+            func();
+            return -1;
+        }
+        return retTime;
     }
 
+    public void AppearingTween()
+    {
+        TweenAction = ETweenAction.Appearing;
+        AnimTween(-20);
+    }
+
+    public void DisappearingTween()
+    {
+        TweenAction = ETweenAction.Disappearing;
+        AnimTween(20);
+    }
+
+    private void AnimTween(int pos)
+    {
+        Creature.Tween = GetTree().CreateTween();
+        Creature.Tween.TweenProperty(
+            Creature, "global_position",
+            new Vector2(Creature.GlobalPosition.X,
+                Creature.GlobalPosition.Y + pos), .5)
+            .SetEase(Tween.EaseType.InOut)
+            .SetTrans(Tween.TransitionType.Cubic);
+        Creature.Tween.Finished += OnTweenFinished;
+    }
 }

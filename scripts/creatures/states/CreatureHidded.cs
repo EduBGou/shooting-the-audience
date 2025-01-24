@@ -1,11 +1,24 @@
-using GlobalEnums;
+using Godot;
 
 public partial class CreatureHidded : CreatureState
 {
+    public double hiddedTime;
     public override void Enter()
     {
         base.Enter();
-        if (!Creature.Collision.Disabled)
-            Creature.Collision.Disabled = true;
+        Creature.Collision.Disabled = true;
+        Creature.SignComponent.Visible = false;
+        Creature.AnimatedSprite.Animation = "crying";
+        hiddedTime = 3;
+    }
+
+    public override void PhysicsUpdate(double delta)
+    {
+        base.PhysicsUpdate(delta);
+        hiddedTime = DescontTimeOf(hiddedTime, delta, () =>
+        {
+            ChangeToState(EState.Sneaking);
+        });
+
     }
 }
