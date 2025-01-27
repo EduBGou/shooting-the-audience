@@ -3,6 +3,7 @@ using GlobalEnums;
 
 public partial class Creature : Area2D
 {
+    [Signal] public delegate void DeadSignalEventHandler();
     [Export] public SignComponent SignComponent;
 
     public CollisionShape2D Collision { get; set; }
@@ -11,12 +12,10 @@ public partial class Creature : Area2D
     public EColor EColor { get; set; }
     public Tween Tween { get; set; }
 
-    private GlobalVars GlobalVars;
 
     public override void _Ready()
     {
         base._Ready();
-        GlobalVars = GetNode<GlobalVars>("/root/" + nameof(GlobalVars));
         Collision = GetNode<CollisionShape2D>(nameof(Collision));
         AnimatedSprite = GetNode<AnimatedSprite2D>(nameof(AnimatedSprite));
     }
@@ -28,7 +27,6 @@ public partial class Creature : Area2D
 
     public void Dead()
     {
-        GlobalVars.Coins++;
-        AnimatedSprite.Animation = "dead";
+        EmitSignal(SignalName.DeadSignal);
     }
 }

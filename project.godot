@@ -35,9 +35,8 @@ project/assembly_name="Shooting the Audience"
 [file_customization]
 
 folder_colors={
-"res://scenes/": "purple",
-"res://scripts/": "red",
-"res://sprites/": "yellow"
+"res://resources/": "gray",
+"res://scripts/": "red"
 }
 
 [input]

@@ -21,6 +21,7 @@ public partial class CreatureIdle : CreatureState
         });
     }
 
+
     public override void OnTweenFinished()
     {
         base.OnTweenFinished();

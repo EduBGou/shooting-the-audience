@@ -30,7 +30,9 @@ public partial class Crosshair : Area2D
         if (@event is InputEventMouseButton mouseEvent && mouseEvent.Pressed)
         {
             if (Preys.Count > 0)
+            {
                 Preys[0].Dead();
+            }
         }
 
         // Change the Crosshair color by Input

@@ -6,13 +6,14 @@ public partial class CreatureState : Node
 {
     [Signal]
     public delegate void StateTransitionEventHandler(CreatureState from, EState to);
-    public enum EState { Idle, Sneaking, Hidded }
+
+    public enum EState { Idle, Sneaking, Hidded, Dead }
     protected enum ETweenAction { Appearing, Disappearing };
 
     [Export] public EState State { get; set; }
-    protected ETweenAction TweenAction { get; set; }
-    public Creature Creature { get; set; }
 
+    public Creature Creature { get; set; }
+    protected ETweenAction TweenAction { get; set; }
 
     public virtual void Enter() { GD.Print("Enter in State: ", Name); }
     public virtual void Update(double delta) { }
@@ -42,16 +43,17 @@ public partial class CreatureState : Node
         return retTime;
     }
 
+    // Develog a more dynamic and flexible way to manipulate tween animations
     public void AppearingTween()
     {
         TweenAction = ETweenAction.Appearing;
-        AnimTween(-20);
+        AnimTween(-18);
     }
 
     public void DisappearingTween()
     {
         TweenAction = ETweenAction.Disappearing;
-        AnimTween(20);
+        AnimTween(18);
     }
 
     private void AnimTween(int pos)
@@ -64,5 +66,11 @@ public partial class CreatureState : Node
             .SetEase(Tween.EaseType.InOut)
             .SetTrans(Tween.TransitionType.Cubic);
         Creature.Tween.Finished += OnTweenFinished;
+    }
+
+    public void OnDead()
+    {
+        // Some Implementation
+        ChangeToState(EState.Dead);
     }
 }

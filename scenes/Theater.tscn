@@ -1,27 +1,89 @@
 [gd_scene load_steps=6 format=3 uid="uid://b743stvtaptpu"]
 
-[ext_resource type="Script" path="res://scripts/Theater.cs" id="1_3t5nv"]
+[ext_resource type="Script" path="res://scripts/scenario/Theater.cs" id="1_3t5nv"]
 [ext_resource type="PackedScene" uid="uid://bgidv86ng0yxg" path="res://scenes/UI/GameplayUI.tscn" id="1_xjjcl"]
-[ext_resource type="Texture2D" uid="uid://s15vsbb066em" path="res://sprites/scenario/Scene-Test.png" id="2_0q4mv"]
 [ext_resource type="PackedScene" uid="uid://ci5g6y2gh82gc" path="res://scenes/Crosshair.tscn" id="2_e5ssn"]
-[ext_resource type="PackedScene" uid="uid://cwoxi7ahrhjfr" path="res://scenes/creatures/Koala.tscn" id="5_wunr0"]
+[ext_resource type="Texture2D" uid="uid://ca1jxjoqnufm" path="res://sprites/scenario/Scene-Test-No-Armchair.png" id="3_erjgl"]
+[ext_resource type="PackedScene" uid="uid://0s8ij3hubjen" path="res://scenes/scenerio/Armchair.tscn" id="6_vcc08"]
 
-[node name="Theater" type="Node2D"]
+[node name="Theater" type="Node2D" node_paths=PackedStringArray("CreaturesNode", "ArmchairsNode")]
 script = ExtResource("1_3t5nv")
+CreaturesNode = NodePath("Creatures")
+ArmchairsNode = NodePath("Armchairs")
 
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="GameplayUI" parent="UI" instance=ExtResource("1_xjjcl")]
 metadata/_edit_lock_ = true
 
-[node name="Background" type="Sprite2D" parent="."]
-position = Vector2(180, 101)
-texture = ExtResource("2_0q4mv")
-metadata/_edit_lock_ = true
+[node name="Scene-test-no-armchair" type="Sprite2D" parent="."]
+position = Vector2(181, 102)
+scale = Vector2(1.00556, 1.00739)
+texture = ExtResource("3_erjgl")
+
+[node name="Aim" parent="." instance=ExtResource("2_e5ssn")]
+z_index = 1
 
 [node name="Creatures" type="Node2D" parent="."]
 
-[node name="Koala" parent="Creatures" instance=ExtResource("5_wunr0")]
-position = Vector2(71, 124)
+[node name="Armchairs" type="Node2D" parent="."]
 
-[node name="Aim" parent="." instance=ExtResource("2_e5ssn")]
+[node name="Armchair" parent="Armchairs" instance=ExtResource("6_vcc08")]
+position = Vector2(59, 104)
+
+[node name="Armchair2" parent="Armchairs" instance=ExtResource("6_vcc08")]
+position = Vector2(100, 104)
+
+[node name="Armchair3" parent="Armchairs" instance=ExtResource("6_vcc08")]
+position = Vector2(141, 104)
+
+[node name="Armchair4" parent="Armchairs" instance=ExtResource("6_vcc08")]
+position = Vector2(182, 104)
+
+[node name="Armchair5" parent="Armchairs" instance=ExtResource("6_vcc08")]
+position = Vector2(223, 104)
+
+[node name="Armchair6" parent="Armchairs" instance=ExtResource("6_vcc08")]
+position = Vector2(264, 104)
+
+[node name="Armchair7" parent="Armchairs" instance=ExtResource("6_vcc08")]
+position = Vector2(305, 104)
+
+[node name="Armchair9" parent="Armchairs" instance=ExtResource("6_vcc08")]
+position = Vector2(77, 129)
+
+[node name="Armchair10" parent="Armchairs" instance=ExtResource("6_vcc08")]
+position = Vector2(118, 129)
+
+[node name="Armchair11" parent="Armchairs" instance=ExtResource("6_vcc08")]
+position = Vector2(159, 129)
+
+[node name="Armchair12" parent="Armchairs" instance=ExtResource("6_vcc08")]
+position = Vector2(200, 129)
+
+[node name="Armchair13" parent="Armchairs" instance=ExtResource("6_vcc08")]
+position = Vector2(241, 129)
+
+[node name="Armchair14" parent="Armchairs" instance=ExtResource("6_vcc08")]
+position = Vector2(282, 129)
+
+[node name="Armchair15" parent="Armchairs" instance=ExtResource("6_vcc08")]
+position = Vector2(59, 156)
+
+[node name="Armchair16" parent="Armchairs" instance=ExtResource("6_vcc08")]
+position = Vector2(100, 156)
+
+[node name="Armchair17" parent="Armchairs" instance=ExtResource("6_vcc08")]
+position = Vector2(141, 156)
+
+[node name="Armchair18" parent="Armchairs" instance=ExtResource("6_vcc08")]
+position = Vector2(182, 156)
+
+[node name="Armchair19" parent="Armchairs" instance=ExtResource("6_vcc08")]
+position = Vector2(223, 156)
+
+[node name="Armchair20" parent="Armchairs" instance=ExtResource("6_vcc08")]
+position = Vector2(264, 156)
+
+[node name="Armchair21" parent="Armchairs" instance=ExtResource("6_vcc08")]
+position = Vector2(305, 156)

@@ -17,6 +17,7 @@ public partial class CreatureStateMachine : Node
             creatureStates[child.State] = child;
             child.Creature = Creature;
             child.StateTransition += OnStateTransition;
+            Creature.DeadSignal += child.OnDead;
         }
 
         currentState = creatureStates[CreatureState.EState.Hidded];

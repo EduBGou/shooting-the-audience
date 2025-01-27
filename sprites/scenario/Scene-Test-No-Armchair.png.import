@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ctroemhxlmuqg"
-path="res://.godot/imported/Seat.png-048f2f78e8e7ce9c793d69ee4950a868.ctex"
+uid="uid://ca1jxjoqnufm"
+path="res://.godot/imported/Scene-Test-No-Armchair.png-1bdcc06da20361f579db3c6d57aefd34.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/scenario/Seat.png"
-dest_files=["res://.godot/imported/Seat.png-048f2f78e8e7ce9c793d69ee4950a868.ctex"]
+source_file="res://sprites/scenario/Scene-Test-No-Armchair.png"
+dest_files=["res://.godot/imported/Scene-Test-No-Armchair.png-1bdcc06da20361f579db3c6d57aefd34.ctex"]
 
 [params]
 
