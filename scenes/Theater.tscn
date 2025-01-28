@@ -8,6 +8,7 @@
 
 [node name="Theater" type="Node2D" node_paths=PackedStringArray("CreaturesNode", "ArmchairsNode")]
 script = ExtResource("1_3t5nv")
+InitialSpawn = 50
 CreaturesNode = NodePath("Creatures")
 ArmchairsNode = NodePath("Armchairs")
 

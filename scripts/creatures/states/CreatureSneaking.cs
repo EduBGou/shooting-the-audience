@@ -2,10 +2,11 @@ using Godot;
 
 public partial class CreatureSneaking : CreatureState
 {
-    public double sneakingTime = -2;
+    public double sneakingTime;
     public override void Enter()
     {
         base.Enter();
+        sneakingTime = -1.5;
         Creature.Collision.Disabled = true;
         Creature.SignComponent.Visible = true;
         Creature.AnimatedSprite.Animation = "sneaking";

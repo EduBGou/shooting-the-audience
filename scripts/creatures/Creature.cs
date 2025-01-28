@@ -40,7 +40,7 @@ public partial class Creature : Area2D
     public void ChangeToRandomEColor()
     {
         var eColorValues = Enum.GetValues(typeof(EColor));
-        var rdm = new Random().Next(eColorValues.Length - 1);
+        var rdm = new Random().Next(eColorValues.Length);
         EColor = (EColor)eColorValues.GetValue(rdm);
     }
 

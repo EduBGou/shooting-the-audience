@@ -18,6 +18,6 @@ public partial class Armchair : Node2D
     public void ChangeFreeFlagTo(bool isFree)
     {
         IsFree = isFree;
-        EmitSignal(SignalName.UpdatedIsFreeFlag, this, GetIsFree());
+        EmitSignal(SignalName.UpdatedIsFreeFlag, this, isFree);
     }
 }

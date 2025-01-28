@@ -2,10 +2,11 @@ using Godot;
 
 public partial class CreatureHidded : CreatureState
 {
-    public double hiddedTime = -3;
+    public double hiddedTime;
     public override void Enter()
     {
         base.Enter();
+        hiddedTime = -1;
         Creature.Collision.Disabled = true;
         Creature.SignComponent.Visible = false;
         Creature.AnimatedSprite.Animation = "crying";

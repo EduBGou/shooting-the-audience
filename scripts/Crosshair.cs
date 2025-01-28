@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using Godot;
 using GlobalEnums;
+using System.Linq;
 
 public partial class Crosshair : Area2D
 {
-    public List<Creature> Preys = new();
+    public List<Creature> TargetCreatures = new();
     public Sprite2D Sprite { get; set; }
     public EColor EColor = EColor.Red;
 
@@ -29,9 +30,14 @@ public partial class Crosshair : Area2D
         base._Input(@event);
         if (@event is InputEventMouseButton mouseEvent && mouseEvent.Pressed)
         {
-            if (Preys.Count > 0 && Preys[0].EColor == EColor)
+            if (TargetCreatures.Count > 0)
             {
-                Preys[0].Dead();
+                var target = TargetCreatures.Last();
+                if (target.EColor == EColor && !target.Collision.Disabled)
+                {
+                    target.Dead();
+                    TargetCreatures.Remove(target);
+                }
             }
         }
 
@@ -74,13 +80,13 @@ public partial class Crosshair : Area2D
     private void OnAreaEntered(Area2D area)
     {
         if (area is Creature creature)
-            Preys.Add(creature);
+            TargetCreatures.Add(creature);
     }
 
     private void OnAreaExited(Area2D area)
     {
         if (area is Creature creature)
-            Preys.Remove(creature);
+            TargetCreatures.Remove(creature);
     }
     #endregion
 }

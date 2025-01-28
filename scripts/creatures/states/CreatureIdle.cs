@@ -2,10 +2,11 @@ using Godot;
 
 public partial class CreatureIdle : CreatureState
 {
-    public double idleTime = -3;
+    public double idleTime;
     public override void Enter()
     {
         base.Enter();
+        idleTime = -2;
         Creature.SignComponent.Visible = false;
         Creature.AnimatedSprite.Animation = "rage";
         AppearingTween(.2);

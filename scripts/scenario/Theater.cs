@@ -5,6 +5,7 @@ using Godot;
 
 public partial class Theater : Node2D
 {
+    [Export] public int InitialSpawn = 1;
     [Export] public Node2D CreaturesNode;
     [Export] public Node2D ArmchairsNode;
 
@@ -20,26 +21,29 @@ public partial class Theater : Node2D
             armchair.UpdatedIsFreeFlag += OnUpdatedIsFreeFlag;
             armchair.ChangeFreeFlagTo(true);
         }
-        Spawn(10);
+        Spawn(InitialSpawn);
     }
 
     public void Spawn(int Amount)
     {
-        if (Amount >= FreeArmchairs.Count) Amount = FreeArmchairs.Count - 1;
+        if (Amount > FreeArmchairs.Count)
+        {
+            Amount = FreeArmchairs.Count - 1;
+        }
         for (var i = 0; i < Amount; i++)
         {
             var creatureInstance = CreaturePckScn.Instantiate<Creature>();
-            creatureInstance.PlaceOnArmchair(ChooseRandomArmchair());
+            creatureInstance.PlaceOnArmchair(FreeArmchairs[0]);
             CreaturesNode.AddChild(creatureInstance);
         }
     }
 
     public static Armchair ChooseRandomArmchair()
     {
+        if (FreeArmchairs.Count == 0) return null;
         Armchair choosedArmchair;
-        var rdm = new Random().Next(FreeArmchairs.Count - 1);
+        var rdm = new Random().Next(FreeArmchairs.Count);
         choosedArmchair = FreeArmchairs[rdm];
-        choosedArmchair.ChangeFreeFlagTo(false);
         return choosedArmchair;
     }
 
@@ -50,5 +54,4 @@ public partial class Theater : Node2D
         else
             FreeArmchairs.Remove(armchair);
     }
-
 }
