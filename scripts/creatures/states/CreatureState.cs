@@ -15,7 +15,7 @@ public partial class CreatureState : Node
     public Creature Creature { get; set; }
     protected ETweenAction TweenAction { get; set; }
 
-    public virtual void Enter() { GD.Print("Enter in State: ", Name); }
+    public virtual void Enter() { }
     public virtual void Update(double delta) { }
     public virtual void PhysicsUpdate(double delta) { }
     public virtual void Exit() { }
@@ -35,7 +35,7 @@ public partial class CreatureState : Node
         if (retTime > 0)
             retTime -= delta;
 
-        if (retTime < 0 && retTime != -1)
+        if (retTime > -1 && retTime < 0)
         {
             func();
             return -1;
@@ -44,25 +44,25 @@ public partial class CreatureState : Node
     }
 
     // Develog a more dynamic and flexible way to manipulate tween animations
-    public void AppearingTween()
+    public void AppearingTween(double duration = .5)
     {
         TweenAction = ETweenAction.Appearing;
-        AnimTween(-18);
+        AnimTween(-18, duration);
     }
 
-    public void DisappearingTween()
+    public void DisappearingTween(double duration = .5)
     {
         TweenAction = ETweenAction.Disappearing;
-        AnimTween(18);
+        AnimTween(18, duration);
     }
 
-    private void AnimTween(int pos)
+    private void AnimTween(int pos, double duration)
     {
         Creature.Tween = GetTree().CreateTween();
         Creature.Tween.TweenProperty(
             Creature, "global_position",
             new Vector2(Creature.GlobalPosition.X,
-                Creature.GlobalPosition.Y + pos), .5)
+                Creature.GlobalPosition.Y + pos), duration)
             .SetEase(Tween.EaseType.InOut)
             .SetTrans(Tween.TransitionType.Cubic);
         Creature.Tween.Finished += OnTweenFinished;
@@ -70,7 +70,6 @@ public partial class CreatureState : Node
 
     public void OnDead()
     {
-        // Some Implementation
         ChangeToState(EState.Dead);
     }
 }

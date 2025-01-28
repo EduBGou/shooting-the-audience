@@ -13,10 +13,11 @@ public partial class SignComponent : Node2D
         AnimatedSprite = GetNode<AnimatedSprite2D>(nameof(AnimatedSprite));
     }
 
-    public void ChangeEColorTo(EColor newEColor)
+    public void UpdateEColor(EColor eColor)
     {
-        AnimatedSprite.Animation = newEColor.ToString().ToSnakeCase();
-        EColor = newEColor;
+        if (EColor == eColor) return;
+        AnimatedSprite.Animation = eColor.ToString().ToSnakeCase();
+        EColor = eColor;
     }
 
     public EColor GetEColor()

@@ -2,13 +2,15 @@ using Godot;
 
 public partial class CreatureSneaking : CreatureState
 {
-    public double sneakingTime;
+    public double sneakingTime = -2;
     public override void Enter()
     {
         base.Enter();
         Creature.Collision.Disabled = true;
         Creature.SignComponent.Visible = true;
         Creature.AnimatedSprite.Animation = "sneaking";
+        Creature.PlaceOnArmchair(Theater.ChooseRandomArmchair());
+        Creature.ChangeToRandomEColor();
         AppearingTween();
     }
     public override void PhysicsUpdate(double delta)
@@ -32,7 +34,7 @@ public partial class CreatureSneaking : CreatureState
         switch (TweenAction)
         {
             case ETweenAction.Appearing:
-                sneakingTime = 2;
+                sneakingTime = -sneakingTime ;
                 break;
 
             case ETweenAction.Disappearing:

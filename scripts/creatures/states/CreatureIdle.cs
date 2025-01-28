@@ -2,14 +2,13 @@ using Godot;
 
 public partial class CreatureIdle : CreatureState
 {
-    public double idleTime;
+    public double idleTime = -3;
     public override void Enter()
     {
         base.Enter();
-        Creature.Collision.Disabled = false;
         Creature.SignComponent.Visible = false;
         Creature.AnimatedSprite.Animation = "rage";
-        AppearingTween();
+        AppearingTween(.2);
     }
 
     public override void PhysicsUpdate(double delta)
@@ -17,6 +16,7 @@ public partial class CreatureIdle : CreatureState
         base.PhysicsUpdate(delta);
         idleTime = DescontTimeOf(idleTime, delta, () =>
         {
+            Creature.Collision.Disabled = true;
             DisappearingTween();
         });
     }
@@ -28,7 +28,8 @@ public partial class CreatureIdle : CreatureState
         switch (TweenAction)
         {
             case ETweenAction.Appearing:
-                idleTime = 4;
+                Creature.Collision.Disabled = false;
+                idleTime = -idleTime;
                 break;
 
             case ETweenAction.Disappearing:

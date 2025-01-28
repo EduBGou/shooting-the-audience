@@ -12,6 +12,7 @@ script = ExtResource("1_ga6ai")
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_01oib")
+debug_color = Color(1, 1, 1, 0.42)
 
 [node name="Sprite" type="Sprite2D" parent="."]
 texture = ExtResource("2_0u7u1")

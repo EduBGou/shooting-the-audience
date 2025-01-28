@@ -7,7 +7,7 @@ public partial class Crosshair : Area2D
 {
     public List<Creature> Preys = new();
     public Sprite2D Sprite { get; set; }
-    public EColor eColor = EColor.Red;
+    public EColor EColor = EColor.Red;
 
     public override void _Ready()
     {
@@ -29,7 +29,7 @@ public partial class Crosshair : Area2D
         base._Input(@event);
         if (@event is InputEventMouseButton mouseEvent && mouseEvent.Pressed)
         {
-            if (Preys.Count > 0)
+            if (Preys.Count > 0 && Preys[0].EColor == EColor)
             {
                 Preys[0].Dead();
             }
@@ -55,7 +55,7 @@ public partial class Crosshair : Area2D
             GD.PrintErr($"\"{imgDir}\" -> Don't exists!");
             return;
         }
-        eColor = newEColor;
+        EColor = newEColor;
     }
 
     public static EColor MapKeysToEColor(InputEventKey keyEvent)
@@ -73,14 +73,14 @@ public partial class Crosshair : Area2D
     #region Adding and Removing areas in/from List "Preys"
     private void OnAreaEntered(Area2D area)
     {
-        if (area is Creature prey)
-            Preys.Add(prey);
+        if (area is Creature creature)
+            Preys.Add(creature);
     }
 
     private void OnAreaExited(Area2D area)
     {
-        if (area is Creature prey)
-            Preys.Remove(prey);
+        if (area is Creature creature)
+            Preys.Remove(creature);
     }
     #endregion
 }
