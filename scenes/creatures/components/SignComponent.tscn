@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://de4hmfhowmw8y"]
 
-[ext_resource type="Script" path="res://scripts/creatures/components/SignComponent.cs" id="1_341et"]
+[ext_resource type="Script" uid="uid://bfeqr2mjsgn5a" path="res://scripts/creatures/components/SignComponent.cs" id="1_341et"]
 [ext_resource type="Texture2D" uid="uid://c8xqvhuepu1q5" path="res://sprites/objects/Red-Sign.png" id="1_y6xb8"]
 [ext_resource type="Texture2D" uid="uid://cracir7i1c7sj" path="res://sprites/objects/Blue-Sign.png" id="2_mhkp2"]
 [ext_resource type="Texture2D" uid="uid://dhffl77qso4nl" path="res://sprites/objects/Green-Sign.png" id="3_172c1"]

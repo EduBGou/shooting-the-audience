@@ -18,7 +18,7 @@ public partial class CreatureIdle : CreatureState
         idleTime = DescontTimeOf(idleTime, delta, () =>
         {
             Creature.Collision.Disabled = true;
-            DisappearingTween();
+            DisappearingTween(.2);
         });
     }
 

@@ -9,8 +9,12 @@ public partial class Theater : Node2D
     [Export] public Node2D CreaturesNode;
     [Export] public Node2D ArmchairsNode;
 
-    public static PackedScene CreaturePckScn => GD.Load<PackedScene>("res://scenes/creatures/Koala.tscn");
-    public static List<Armchair> FreeArmchairs { get; set; } = new();
+    public static List<PackedScene> CreaturePckScn =>
+        [
+            GD.Load<PackedScene>("res://scenes/creatures/Koala.tscn"),
+            GD.Load<PackedScene>("res://scenes/creatures/Frog.tscn")
+        ];
+    public static List<Armchair> FreeArmchairs { get; set; } = [];
 
     public override void _Ready()
     {
@@ -32,7 +36,7 @@ public partial class Theater : Node2D
         }
         for (var i = 0; i < Amount; i++)
         {
-            var creatureInstance = CreaturePckScn.Instantiate<Creature>();
+            var creatureInstance = CreaturePckScn[0].Instantiate<Creature>();
             creatureInstance.PlaceOnArmchair(FreeArmchairs[0]);
             CreaturesNode.AddChild(creatureInstance);
         }

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cl87aot68n8k"]
 
-[ext_resource type="Script" path="res://scripts/creatures/Creature.cs" id="1_tslr5"]
+[ext_resource type="Script" uid="uid://2hrkhcxvho18" path="res://scripts/creatures/Creature.cs" id="1_tslr5"]
 
 [node name="Creature" type="Area2D" groups=["Preys"]]
 collision_layer = 2

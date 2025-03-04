@@ -6,20 +6,20 @@ public partial class CreatureSneaking : CreatureState
     public override void Enter()
     {
         base.Enter();
-        sneakingTime = -1.5;
+        sneakingTime = -1;
         Creature.Collision.Disabled = true;
         Creature.SignComponent.Visible = true;
         Creature.AnimatedSprite.Animation = "sneaking";
         Creature.PlaceOnArmchair(Theater.ChooseRandomArmchair());
         Creature.ChangeToRandomEColor();
-        AppearingTween();
+        AppearingTween(.2);
     }
     public override void PhysicsUpdate(double delta)
     {
         base.PhysicsUpdate(delta);
         sneakingTime = DescontTimeOf(sneakingTime, delta, () =>
         {
-            DisappearingTween();
+            DisappearingTween(.2);
         });
     }
 
@@ -35,7 +35,7 @@ public partial class CreatureSneaking : CreatureState
         switch (TweenAction)
         {
             case ETweenAction.Appearing:
-                sneakingTime = -sneakingTime ;
+                sneakingTime = -sneakingTime;
                 break;
 
             case ETweenAction.Disappearing:

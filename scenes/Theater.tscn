@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://b743stvtaptpu"]
 
-[ext_resource type="Script" path="res://scripts/scenario/Theater.cs" id="1_3t5nv"]
+[ext_resource type="Script" uid="uid://drreuw5dmhv5g" path="res://scripts/scenario/Theater.cs" id="1_3t5nv"]
 [ext_resource type="PackedScene" uid="uid://bgidv86ng0yxg" path="res://scenes/UI/GameplayUI.tscn" id="1_xjjcl"]
 [ext_resource type="PackedScene" uid="uid://ci5g6y2gh82gc" path="res://scenes/Crosshair.tscn" id="2_e5ssn"]
 [ext_resource type="Texture2D" uid="uid://ca1jxjoqnufm" path="res://sprites/scenario/Scene-Test-No-Armchair.png" id="3_erjgl"]
@@ -8,7 +8,7 @@
 
 [node name="Theater" type="Node2D" node_paths=PackedStringArray("CreaturesNode", "ArmchairsNode")]
 script = ExtResource("1_3t5nv")
-InitialSpawn = 50
+InitialSpawn = 16
 CreaturesNode = NodePath("Creatures")
 ArmchairsNode = NodePath("Armchairs")
 

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://c5c84ka6ouq1r"]
 
-[ext_resource type="Script" path="res://scripts/creatures/states/CreatureSneaking.cs" id="1_4fur0"]
+[ext_resource type="Script" uid="uid://bfd7suy4i4n2t" path="res://scripts/creatures/states/CreatureSneaking.cs" id="1_4fur0"]
 
 [node name="CreatureSneaking" type="Node"]
 script = ExtResource("1_4fur0")

@@ -1,0 +1,91 @@
+[gd_scene load_steps=12 format=3 uid="uid://cdx30w0mrsnth"]
+
+[ext_resource type="PackedScene" uid="uid://cl87aot68n8k" path="res://scenes/creatures/Creature.tscn" id="1_ootaf"]
+[ext_resource type="Texture2D" uid="uid://ctns2y4lfwg1k" path="res://sprites/creatures/frog/Frog.png" id="2_crqn0"]
+[ext_resource type="PackedScene" uid="uid://de4hmfhowmw8y" path="res://scenes/creatures/components/SignComponent.tscn" id="3_f4y47"]
+[ext_resource type="PackedScene" uid="uid://v4ln26do6qe7" path="res://scenes/creatures/state_machine/CreatureStateMachine.tscn" id="4_6mlr3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m6pp1"]
+atlas = ExtResource("2_crqn0")
+region = Rect2(160, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j0ah2"]
+atlas = ExtResource("2_crqn0")
+region = Rect2(80, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ba6o2"]
+atlas = ExtResource("2_crqn0")
+region = Rect2(120, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fr3ba"]
+atlas = ExtResource("2_crqn0")
+region = Rect2(0, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ep1y"]
+atlas = ExtResource("2_crqn0")
+region = Rect2(40, 0, 40, 40)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lgyef"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m6pp1")
+}],
+"loop": true,
+"name": &"crying",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j0ah2")
+}],
+"loop": true,
+"name": &"dead",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ba6o2")
+}],
+"loop": true,
+"name": &"rage",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fr3ba")
+}],
+"loop": true,
+"name": &"sneaking",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6ep1y")
+}],
+"loop": true,
+"name": &"worried",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qrwdd"]
+size = Vector2(20, 12)
+
+[node name="Frog" node_paths=PackedStringArray("SignComponent") instance=ExtResource("1_ootaf")]
+SignComponent = NodePath("SignComponent")
+
+[node name="AnimatedSprite" type="AnimatedSprite2D" parent="." index="0"]
+position = Vector2(0, -15)
+sprite_frames = SubResource("SpriteFrames_lgyef")
+animation = &"sneaking"
+autoplay = "crying"
+
+[node name="Collision" type="CollisionShape2D" parent="." index="1"]
+position = Vector2(0, -22)
+shape = SubResource("RectangleShape2D_qrwdd")
+
+[node name="SignComponent" parent="." index="2" instance=ExtResource("3_f4y47")]
+position = Vector2(4, 0)
+
+[node name="CreatureStateMachine" parent="." index="3" node_paths=PackedStringArray("Creature") instance=ExtResource("4_6mlr3")]
+Creature = NodePath("..")

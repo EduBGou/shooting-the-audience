@@ -1,6 +1,6 @@
 [gd_scene load_steps=23 format=3 uid="uid://cwoxi7ahrhjfr"]
 
-[ext_resource type="Script" path="res://scripts/creatures/Koala.cs" id="1_7b2cn"]
+[ext_resource type="Script" uid="uid://di4ujtcptop40" path="res://scripts/creatures/Koala.cs" id="1_7b2cn"]
 [ext_resource type="PackedScene" uid="uid://de4hmfhowmw8y" path="res://scenes/creatures/components/SignComponent.tscn" id="3_j0o2x"]
 [ext_resource type="PackedScene" uid="uid://v4ln26do6qe7" path="res://scenes/creatures/state_machine/CreatureStateMachine.tscn" id="3_txa4l"]
 
@@ -167,5 +167,3 @@ visible = false
 
 [node name="CreatureStateMachine" parent="." node_paths=PackedStringArray("Creature") instance=ExtResource("3_txa4l")]
 Creature = NodePath("..")
-
-[node name="StateTimer" type="Timer" parent="."]

@@ -1,10 +1,10 @@
 [gd_scene load_steps=6 format=3 uid="uid://v4ln26do6qe7"]
 
-[ext_resource type="Script" path="res://scripts/creatures/state_machine/CreatureStateMachine.cs" id="1_5sdar"]
-[ext_resource type="Script" path="res://scripts/creatures/states/CreatureIdle.cs" id="2_v78s4"]
-[ext_resource type="Script" path="res://scripts/creatures/states/CreatureSneaking.cs" id="3_ak4nv"]
-[ext_resource type="Script" path="res://scripts/creatures/states/CreatureHidded.cs" id="4_xd6ok"]
-[ext_resource type="Script" path="res://scripts/creatures/states/CreatureDead.cs" id="5_xsoxs"]
+[ext_resource type="Script" uid="uid://lps5jyrdaecn" path="res://scripts/creatures/state_machine/CreatureStateMachine.cs" id="1_5sdar"]
+[ext_resource type="Script" uid="uid://dfvwtfrapo811" path="res://scripts/creatures/states/CreatureIdle.cs" id="2_v78s4"]
+[ext_resource type="Script" uid="uid://bfd7suy4i4n2t" path="res://scripts/creatures/states/CreatureSneaking.cs" id="3_ak4nv"]
+[ext_resource type="Script" uid="uid://7f0y6uvj6cvn" path="res://scripts/creatures/states/CreatureHidded.cs" id="4_xd6ok"]
+[ext_resource type="Script" uid="uid://hxwa8wjh5kl1" path="res://scripts/creatures/states/CreatureDead.cs" id="5_xsoxs"]
 
 [node name="CreatureStateMachine" type="Node"]
 script = ExtResource("1_5sdar")
