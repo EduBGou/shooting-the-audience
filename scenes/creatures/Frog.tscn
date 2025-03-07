@@ -87,5 +87,4 @@ shape = SubResource("RectangleShape2D_qrwdd")
 [node name="SignComponent" parent="." index="2" instance=ExtResource("3_f4y47")]
 position = Vector2(4, 0)
 
-[node name="CreatureStateMachine" parent="." index="3" node_paths=PackedStringArray("Creature") instance=ExtResource("4_6mlr3")]
-Creature = NodePath("..")
+[node name="CreatureStateMachine" parent="." index="3" instance=ExtResource("4_6mlr3")]

@@ -1,5 +1,4 @@
 using Godot;
-using GlobalEnums;
 using System;
 
 public partial class Creature : Area2D
@@ -10,9 +9,8 @@ public partial class Creature : Area2D
     public CollisionShape2D Collision { get; set; }
     public AnimatedSprite2D AnimatedSprite { get; set; }
     public Armchair Armchair { get; set; }
-    public EColor EColor { get; set; }
+    public GlobalEnums.EColor EColor { get; set; }
     public Tween Tween { get; set; }
-
 
     public override void _Ready()
     {
@@ -28,6 +26,10 @@ public partial class Creature : Area2D
 
     }
 
+    /// <summary>
+    /// Leave the current armchair free and place the Creature in a new one.
+    /// </summary>
+    /// <param name="newArmchair"></param>
     public void PlaceOnArmchair(Armchair newArmchair)
     {
         Armchair?.ChangeFreeFlagTo(true);
@@ -39,9 +41,9 @@ public partial class Creature : Area2D
 
     public void ChangeToRandomEColor()
     {
-        var eColorValues = Enum.GetValues(typeof(EColor));
+        var eColorValues = Enum.GetValues(typeof(GlobalEnums.EColor));
         var rdm = new Random().Next(eColorValues.Length);
-        EColor = (EColor)eColorValues.GetValue(rdm);
+        EColor = (GlobalEnums.EColor)eColorValues.GetValue(rdm);
     }
 
     public void Dead()

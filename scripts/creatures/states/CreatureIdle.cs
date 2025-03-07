@@ -7,8 +7,8 @@ public partial class CreatureIdle : CreatureState
     {
         base.Enter();
         idleTime = -2;
-        Creature.SignComponent.Visible = false;
-        Creature.AnimatedSprite.Animation = "rage";
+        CreatureOwner.SignComponent.Visible = false;
+        CreatureOwner.AnimatedSprite.Animation = "rage";
         AppearingTween(.2);
     }
 
@@ -17,7 +17,7 @@ public partial class CreatureIdle : CreatureState
         base.PhysicsUpdate(delta);
         idleTime = DescontTimeOf(idleTime, delta, () =>
         {
-            Creature.Collision.Disabled = true;
+            CreatureOwner.Collision.Disabled = true;
             DisappearingTween(.2);
         });
     }
@@ -29,12 +29,12 @@ public partial class CreatureIdle : CreatureState
         switch (TweenAction)
         {
             case ETweenAction.Appearing:
-                Creature.Collision.Disabled = false;
+                CreatureOwner.Collision.Disabled = false;
                 idleTime = -idleTime;
                 break;
 
             case ETweenAction.Disappearing:
-                ChangeToState(EState.Hidded);
+                ChangeToState(ECreatureState.Hidded);
                 break;
         }
     }

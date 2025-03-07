@@ -7,9 +7,9 @@ public partial class CreatureHidded : CreatureState
     {
         base.Enter();
         hiddedTime = -1;
-        Creature.Collision.Disabled = true;
-        Creature.SignComponent.Visible = false;
-        Creature.AnimatedSprite.Animation = "crying";
+        CreatureOwner.Collision.Disabled = true;
+        CreatureOwner.SignComponent.Visible = false;
+        CreatureOwner.AnimatedSprite.Animation = "crying";
         hiddedTime = -hiddedTime;
     }
 
@@ -18,7 +18,7 @@ public partial class CreatureHidded : CreatureState
         base.PhysicsUpdate(delta);
         hiddedTime = DescontTimeOf(hiddedTime, delta, () =>
         {
-            ChangeToState(EState.Sneaking);
+            ChangeToState(ECreatureState.Sneaking);
         });
 
     }

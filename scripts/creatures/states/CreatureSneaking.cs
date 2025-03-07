@@ -7,13 +7,14 @@ public partial class CreatureSneaking : CreatureState
     {
         base.Enter();
         sneakingTime = -1;
-        Creature.Collision.Disabled = true;
-        Creature.SignComponent.Visible = true;
-        Creature.AnimatedSprite.Animation = "sneaking";
-        Creature.PlaceOnArmchair(Theater.ChooseRandomArmchair());
-        Creature.ChangeToRandomEColor();
+        CreatureOwner.Collision.Disabled = true;
+        CreatureOwner.SignComponent.Visible = true;
+        CreatureOwner.AnimatedSprite.Animation = "sneaking";
+        CreatureOwner.PlaceOnArmchair(Theater.ChooseRandomArmchair());
+        CreatureOwner.ChangeToRandomEColor();
         AppearingTween(.2);
     }
+
     public override void PhysicsUpdate(double delta)
     {
         base.PhysicsUpdate(delta);
@@ -26,7 +27,7 @@ public partial class CreatureSneaking : CreatureState
     public override void Exit()
     {
         base.Exit();
-        Creature.SignComponent.Visible = false;
+        CreatureOwner.SignComponent.Visible = false;
     }
 
     public override void OnTweenFinished()
@@ -39,7 +40,7 @@ public partial class CreatureSneaking : CreatureState
                 break;
 
             case ETweenAction.Disappearing:
-                ChangeToState(EState.Idle);
+                ChangeToState(ECreatureState.Idle);
                 break;
         }
     }

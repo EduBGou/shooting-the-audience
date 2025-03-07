@@ -5,16 +5,16 @@ using Godot;
 
 public partial class Theater : Node2D
 {
-    [Export] public int InitialSpawn = 1;
+    [Export] public int SpawnAmount = 1;
     [Export] public Node2D CreaturesNode;
     [Export] public Node2D ArmchairsNode;
 
+    public static List<Armchair> FreeArmchairs { get; set; } = [];
     public static List<PackedScene> CreaturePckScn =>
         [
             GD.Load<PackedScene>("res://scenes/creatures/Koala.tscn"),
             GD.Load<PackedScene>("res://scenes/creatures/Frog.tscn")
         ];
-    public static List<Armchair> FreeArmchairs { get; set; } = [];
 
     public override void _Ready()
     {
@@ -25,21 +25,7 @@ public partial class Theater : Node2D
             armchair.UpdatedIsFreeFlag += OnUpdatedIsFreeFlag;
             armchair.ChangeFreeFlagTo(true);
         }
-        Spawn(InitialSpawn);
-    }
-
-    public void Spawn(int Amount)
-    {
-        if (Amount > FreeArmchairs.Count)
-        {
-            Amount = FreeArmchairs.Count - 1;
-        }
-        for (var i = 0; i < Amount; i++)
-        {
-            var creatureInstance = CreaturePckScn[0].Instantiate<Creature>();
-            creatureInstance.PlaceOnArmchair(FreeArmchairs[0]);
-            CreaturesNode.AddChild(creatureInstance);
-        }
+        Spawner.Spawn(CreaturesNode, SpawnAmount);
     }
 
     public static Armchair ChooseRandomArmchair()

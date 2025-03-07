@@ -1,17 +1,8 @@
 using Godot;
 using System;
 
-namespace GlobalEnums
-{
-    public enum EColor
-    {
-        Red, Green, Blue, Yellow
-    }
-}
-
 public partial class GlobalVars : Node
 {
-
     private GlobalEvents GlobalEvents;
 
     private int _coin;

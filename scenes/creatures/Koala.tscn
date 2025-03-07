@@ -159,11 +159,11 @@ debug_color = Color(0.765625, 0.311035, 0.70525, 0.42)
 [node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -17)
 sprite_frames = SubResource("SpriteFrames_6j5pj")
-animation = &"sneaking"
+animation = &"crying"
 autoplay = "crying"
 
 [node name="SignComponent" parent="." instance=ExtResource("3_j0o2x")]
 visible = false
 
-[node name="CreatureStateMachine" parent="." node_paths=PackedStringArray("Creature") instance=ExtResource("3_txa4l")]
-Creature = NodePath("..")
+[node name="CreatureStateMachine" parent="." node_paths=PackedStringArray("StateOwner") instance=ExtResource("3_txa4l")]
+StateOwner = NodePath("..")

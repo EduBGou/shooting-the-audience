@@ -1,32 +1,22 @@
 using Godot;
 using System;
 
-[GlobalClass]
-public partial class CreatureState : Node
+public enum ECreatureState
 {
-    [Signal]
-    public delegate void StateTransitionEventHandler(CreatureState from, EState to);
+    Idle, Sneaking, Hidded, Dead
+}
 
-    public enum EState { Idle, Sneaking, Hidded, Dead }
+[GlobalClass]
+public partial class CreatureState : State, IHasEState<ECreatureState>
+{
     protected enum ETweenAction { Appearing, Disappearing };
 
-    [Export] public EState State { get; set; }
+    [Export] public ECreatureState EState { get; set; }
 
-    public Creature Creature { get; set; }
+    public Creature CreatureOwner { get; set; }
     protected ETweenAction TweenAction { get; set; }
 
-    public virtual void Enter() { }
-    public virtual void Update(double delta) { }
-    public virtual void PhysicsUpdate(double delta) { }
-    public virtual void Exit() { }
-
     public virtual void OnTweenFinished() { }
-
-    public void ChangeToState(EState eState)
-    {
-        if (State == eState) return;
-        EmitSignal(SignalName.StateTransition, this, Variant.From(eState));
-    }
 
     public static double DescontTimeOf(double cTime, double delta, Action func)
     {
@@ -58,18 +48,18 @@ public partial class CreatureState : Node
 
     private void AnimTween(int pos, double duration)
     {
-        Creature.Tween = GetTree().CreateTween();
-        Creature.Tween.TweenProperty(
-            Creature, "global_position",
-            new Vector2(Creature.GlobalPosition.X,
-                Creature.GlobalPosition.Y + pos), duration)
+        CreatureOwner.Tween = GetTree().CreateTween();
+        CreatureOwner.Tween.TweenProperty(
+            CreatureOwner, "global_position",
+            new Vector2(CreatureOwner.GlobalPosition.X,
+                CreatureOwner.GlobalPosition.Y + pos), duration)
             .SetEase(Tween.EaseType.InOut)
             .SetTrans(Tween.TransitionType.Cubic);
-        Creature.Tween.Finished += OnTweenFinished;
+        CreatureOwner.Tween.Finished += OnTweenFinished;
     }
 
     public void OnDead()
     {
-        ChangeToState(EState.Dead);
+        ChangeToState(ECreatureState.Dead);
     }
 }

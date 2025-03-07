@@ -1,14 +1,13 @@
 
 using System.Collections.Generic;
 using Godot;
-using GlobalEnums;
 using System.Linq;
 
 public partial class Crosshair : Area2D
 {
     public List<Creature> TargetCreatures = new();
     public Sprite2D Sprite { get; set; }
-    public EColor EColor = EColor.Red;
+    public GlobalEnums.EColor EColor = GlobalEnums.EColor.Red;
 
     public override void _Ready()
     {
@@ -48,7 +47,7 @@ public partial class Crosshair : Area2D
         }
     }
 
-    public void ChangeEColor(EColor newEColor)
+    public void ChangeEColor(GlobalEnums.EColor newEColor)
     {
         var imgDir = $"res://sprites/crosshair/{newEColor}.png";
         if (FileAccess.FileExists(imgDir))
@@ -64,15 +63,15 @@ public partial class Crosshair : Area2D
         EColor = newEColor;
     }
 
-    public static EColor MapKeysToEColor(InputEventKey keyEvent)
+    public static GlobalEnums.EColor MapKeysToEColor(InputEventKey keyEvent)
     {
         return keyEvent.KeyLabel switch
         {
-            Key.Key1 => EColor.Red,
-            Key.Key2 => EColor.Green,
-            Key.Key3 => EColor.Blue,
-            Key.Key4 => EColor.Yellow,
-            _ => EColor.Red,
+            Key.Key1 => GlobalEnums.EColor.Red,
+            Key.Key2 => GlobalEnums.EColor.Green,
+            Key.Key3 => GlobalEnums.EColor.Blue,
+            Key.Key4 => GlobalEnums.EColor.Yellow,
+            _ => GlobalEnums.EColor.Red,
         };
     }
 

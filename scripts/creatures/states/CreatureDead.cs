@@ -15,6 +15,6 @@ public partial class CreatureDead : CreatureState
     {
         base.Enter();
         GlobalVars.Coins++;
-        Creature.AnimatedSprite.Animation = "dead";
+        CreatureOwner.AnimatedSprite.Animation = "dead";
     }
 }

@@ -8,7 +8,7 @@
 
 [node name="Theater" type="Node2D" node_paths=PackedStringArray("CreaturesNode", "ArmchairsNode")]
 script = ExtResource("1_3t5nv")
-InitialSpawn = 16
+SpawnAmount = 10
 CreaturesNode = NodePath("Creatures")
 ArmchairsNode = NodePath("Armchairs")
 
@@ -36,7 +36,7 @@ position = Vector2(59, 104)
 
 [node name="Armchair2" parent="Armchairs" instance=ExtResource("6_vcc08")]
 z_index = 1
-position = Vector2(100, 104)
+position = Vector2(98, 99)
 
 [node name="Armchair3" parent="Armchairs" instance=ExtResource("6_vcc08")]
 z_index = 1
