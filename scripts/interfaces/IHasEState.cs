@@ -3,5 +3,5 @@ using System;
 
 public interface IHasEState<TEnum> where TEnum : Enum
 {
-    TEnum EState { get; }
+    TEnum EState { get; set; }
 }

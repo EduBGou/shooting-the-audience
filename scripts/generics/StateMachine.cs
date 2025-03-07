@@ -6,7 +6,7 @@ using System.Linq;
 public partial class StateMachine : Node
 {
     [Export] public Node StateOwner;
-    public State currentState;
+    public State CurrentState;
 
     public override void _Ready()
     {
@@ -20,8 +20,7 @@ public partial class StateMachine : Node
         {
             dic[child.EState] = child;
             child.StateTransition += (from, to) => OnStateTransition(
-                (TState)from, (TEnum) Enum.ToObject(typeof(TEnum) , to), dic);
-
+                (TState)from, (TEnum)Enum.ToObject(typeof(TEnum), to), dic);
             CustomSetup(child);
         }
     }
@@ -32,27 +31,27 @@ public partial class StateMachine : Node
     public override void _Process(double delta)
     {
         base._Process(delta);
-        if (currentState == null) return;
-        currentState.Update(delta);
+        if (CurrentState == null) return;
+        CurrentState.Update(delta);
     }
 
     public override void _PhysicsProcess(double delta)
     {
         base._PhysicsProcess(delta);
-        if (currentState == null) return;
-        currentState.PhysicsUpdate(delta);
+        if (CurrentState == null) return;
+        CurrentState.PhysicsUpdate(delta);
     }
 
     public void OnStateTransition<TEnum, TState>(
         TState from, TEnum to, Dictionary<TEnum, TState> dicStates
     ) where TEnum : Enum where TState : State
     {
-        if (from != currentState) return;
+        if (from != CurrentState) return;
         if (!dicStates.TryGetValue(to, out var newState) || newState == null)
             return;
 
-        currentState?.Exit();
-        currentState = newState;
-        currentState.Enter();
+        CurrentState?.Exit();
+        CurrentState = newState;
+        CurrentState.Enter();
     }
 }

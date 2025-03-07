@@ -57,9 +57,4 @@ public partial class CreatureState : State, IHasEState<ECreatureState>
             .SetTrans(Tween.TransitionType.Cubic);
         CreatureOwner.Tween.Finished += OnTweenFinished;
     }
-
-    public void OnDead()
-    {
-        ChangeToState(ECreatureState.Dead);
-    }
 }

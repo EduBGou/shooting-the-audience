@@ -7,8 +7,4 @@ public partial class GlobalEnums : Node
     {
         Red, Green, Blue, Yellow
     }
-    public enum EState
-    {
-        Idle, Sneaking, Hidded, Dead
-    }
 }

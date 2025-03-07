@@ -16,7 +16,7 @@ public partial class Spawner : Node
         }
         for (var i = 0; i < amount; i++)
         {
-            var creatureInstance = Theater.CreaturePckScn[0].Instantiate<Creature>();
+            var creatureInstance = GlobalVars.CreaturePckScn[0].Instantiate<Creature>();
             creatureInstance.PlaceOnArmchair(Theater.FreeArmchairs[0]);
             parent.AddChild(creatureInstance);
         }

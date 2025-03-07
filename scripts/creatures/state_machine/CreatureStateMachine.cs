@@ -10,18 +10,23 @@ public partial class CreatureStateMachine : StateMachine
         base._Ready();
         Setup(statesDic);
 
-        currentState = statesDic[ECreatureState.Hidded];
-        StateOwner.Ready += () => { currentState.Enter(); };
+        if (StateOwner is Creature creature)
+            creature.DeadSignal += OnDead;
+
+        CurrentState = statesDic[ECreatureState.Hidded];
+        StateOwner.Ready += () => { CurrentState.Enter(); };
     }
 
     public override void CustomSetup<TState>(TState state)
     {
         base.CustomSetup(state);
-        if (StateOwner is Creature creature && state is CreatureState creatureState)
-        {
-            creatureState.CreatureOwner = creature;
-            creature.DeadSignal += creatureState.OnDead;
-        }
+        if (StateOwner is Creature c && state is CreatureState cState)
+            cState.CreatureOwner = c;
+    }
+
+    private void OnDead()
+    {
+        CurrentState.ChangeToState(ECreatureState.Dead);
     }
 
     public override void _Process(double delta)

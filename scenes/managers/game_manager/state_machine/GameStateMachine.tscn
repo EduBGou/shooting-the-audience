@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://dd06ns4uhaojx"]
+
+[ext_resource type="Script" uid="uid://blpndmptfms6y" path="res://scripts/managers/game_manager/state_machine/GameStateMachine.cs" id="1_fh2th"]
+[ext_resource type="Script" uid="uid://oygvolokul3y" path="res://scripts/managers/game_manager/states/GameStart.cs" id="2_i2ege"]
+[ext_resource type="Script" uid="uid://cl37n7py0wmfy" path="res://scripts/managers/game_manager/states/GameState.cs" id="2_vtb46"]
+[ext_resource type="Script" uid="uid://c24d7nnrsghym" path="res://scripts/managers/game_manager/states/GameSpawn.cs" id="3_7oy74"]
+
+[node name="GameStateMachine" type="Node"]
+script = ExtResource("1_fh2th")
+
+[node name="GameStart" type="Node" parent="."]
+script = ExtResource("2_i2ege")
+
+[node name="GameSpawn" type="Node" parent="."]
+script = ExtResource("3_7oy74")
+EState = 1
+
+[node name="GameFinished" type="Node" parent="."]
+script = ExtResource("2_vtb46")
+EState = 2
+
+[node name="GameStore" type="Node" parent="."]
+script = ExtResource("2_vtb46")
+EState = 3
+
+[node name="GamePaused" type="Node" parent="."]
+script = ExtResource("2_vtb46")
+EState = 4
+
+[node name="GameTimeout" type="Node" parent="."]
+script = ExtResource("2_vtb46")
+EState = 5
+
+[node name="GameOver" type="Node" parent="."]
+script = ExtResource("2_vtb46")
+EState = 6

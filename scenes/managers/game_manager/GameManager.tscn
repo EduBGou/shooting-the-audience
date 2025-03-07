@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://boj32cwr5bh8f"]
+
+[ext_resource type="Script" uid="uid://cgidfhruuvrs8" path="res://scripts/managers/game_manager/GameManager.cs" id="1_c8r7k"]
+[ext_resource type="PackedScene" uid="uid://dd06ns4uhaojx" path="res://scenes/managers/game_manager/state_machine/GameStateMachine.tscn" id="1_i23eg"]
+
+[node name="GameManager" type="Node"]
+script = ExtResource("1_c8r7k")
+
+[node name="GameStateMachine" parent="." node_paths=PackedStringArray("StateOwner") instance=ExtResource("1_i23eg")]
+StateOwner = NodePath("..")
