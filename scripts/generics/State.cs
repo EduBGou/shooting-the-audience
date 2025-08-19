@@ -13,7 +13,7 @@ public partial class State : Node
         EmitSignal(SignalName.StateTransition, this, Convert.ToInt32(to));
     }
 
-    public virtual void Enter() { GD.Print($"Enter in {Name}"); }
+    public virtual void Enter() { }
     public virtual void Update(double delta) { }
     public virtual void PhysicsUpdate(double delta) { }
     public virtual void Exit() { }

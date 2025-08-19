@@ -10,7 +10,7 @@ public partial class CreatureHidded : CreatureState
         CreatureOwner.Collision.Disabled = true;
         CreatureOwner.SignComponent.Visible = false;
         CreatureOwner.AnimatedSprite.Animation = "crying";
-        hiddedTime = -hiddedTime;
+        hiddedTime *= -1;
     }
 
     public override void PhysicsUpdate(double delta)

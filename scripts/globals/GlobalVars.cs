@@ -16,14 +16,12 @@ public partial class GlobalVars : Node
     public static Node2D CreaturesNode { get; set; }
     public static Node2D ArmchairsNode { get; set; }
 
-
     private static int _coin;
     public static int Coins
     {
         get => _coin; set
         {
             _coin = value;
-            GD.Print(value);
             GlobalEvents.EmitSignal(GlobalEvents.SignalName.CoinsAmountChanged);
         }
     }

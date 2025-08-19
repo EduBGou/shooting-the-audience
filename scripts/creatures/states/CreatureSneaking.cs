@@ -36,7 +36,7 @@ public partial class CreatureSneaking : CreatureState
         switch (TweenAction)
         {
             case ETweenAction.Appearing:
-                sneakingTime = -sneakingTime;
+                sneakingTime *= -1;
                 break;
 
             case ETweenAction.Disappearing:

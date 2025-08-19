@@ -22,16 +22,21 @@ public partial class Creature : Area2D
     public override void _PhysicsProcess(double delta)
     {
         base._PhysicsProcess(delta);
-        SignComponent.UpdateEColor(EColor);
-
+        SignComponent?.UpdateEColor(EColor);
     }
 
     /// <summary>
     /// Leave the current armchair free and place the Creature in a new one.
     /// </summary>
-    /// <param name="newArmchair"></param>
+    /// <param name="newArmchair">The new armchair that the Creature will place.</param>
     public void PlaceOnArmchair(Armchair newArmchair)
     {
+        if (newArmchair == null)
+        {
+            GD.PrintErr("Tried to place Creature on a null Armchair!");
+            return;
+        }
+
         Armchair?.ChangeFreeFlagTo(true);
         Armchair = newArmchair;
         ZIndex = Armchair.ZIndex - 1;
@@ -39,10 +44,11 @@ public partial class Creature : Area2D
         Armchair.ChangeFreeFlagTo(false);
     }
 
+    private static readonly Random _rand = new();
     public void ChangeToRandomEColor()
     {
         var eColorValues = Enum.GetValues(typeof(GlobalEnums.EColor));
-        var rdm = new Random().Next(eColorValues.Length);
+        var rdm = _rand.Next(eColorValues.Length);
         EColor = (GlobalEnums.EColor)eColorValues.GetValue(rdm);
     }
 

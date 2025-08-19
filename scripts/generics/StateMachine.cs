@@ -6,7 +6,7 @@ using System.Linq;
 public partial class StateMachine : Node
 {
     [Export] public Node StateOwner;
-    public State CurrentState;
+    public State CurrentState { get; protected set; }
 
     public override void _Ready()
     {
@@ -16,7 +16,7 @@ public partial class StateMachine : Node
     public virtual void Setup<TEnum, TState>(Dictionary<TEnum, TState> dic)
     where TEnum : Enum where TState : State, IHasEState<TEnum>
     {
-        foreach (var child in GetChildren().Cast<TState>())
+        foreach (var child in GetChildren().OfType<TState>())
         {
             dic[child.EState] = child;
             child.StateTransition += (from, to) => OnStateTransition(
@@ -31,15 +31,13 @@ public partial class StateMachine : Node
     public override void _Process(double delta)
     {
         base._Process(delta);
-        if (CurrentState == null) return;
-        CurrentState.Update(delta);
+        CurrentState?.Update(delta);
     }
 
     public override void _PhysicsProcess(double delta)
     {
         base._PhysicsProcess(delta);
-        if (CurrentState == null) return;
-        CurrentState.PhysicsUpdate(delta);
+        CurrentState?.PhysicsUpdate(delta);
     }
 
     public void OnStateTransition<TEnum, TState>(

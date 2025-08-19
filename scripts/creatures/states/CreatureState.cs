@@ -18,6 +18,12 @@ public partial class CreatureState : State, IHasEState<ECreatureState>
 
     public virtual void OnTweenFinished() { }
 
+    /// <summary>
+    /// Decrease a Double variable for it amount (in seconds) and then call the parameter function when the variable time is up.
+    /// </summary>
+    /// <param name="cTime">The variable that will be decreased.</param>
+    /// <param name="delta">From the PhysicsProcess.</param>
+    /// <param name="func">The function that will be called.</param>
     public static double DescontTimeOf(double cTime, double delta, Action func)
     {
         double retTime = cTime;
@@ -25,7 +31,7 @@ public partial class CreatureState : State, IHasEState<ECreatureState>
         if (retTime > 0)
             retTime -= delta;
 
-        if (retTime > -1 && retTime < 0)
+        if (-1 < retTime && retTime < 0)
         {
             func();
             return -1;
@@ -33,7 +39,6 @@ public partial class CreatureState : State, IHasEState<ECreatureState>
         return retTime;
     }
 
-    // Develog a more dynamic and flexible way to manipulate tween animations
     public void AppearingTween(double duration = .5)
     {
         TweenAction = ETweenAction.Appearing;

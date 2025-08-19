@@ -11,7 +11,7 @@ public partial class Theater : Node2D
     {
         base._Ready();
         Input.MouseMode = Input.MouseModeEnum.Hidden;
-        foreach (var armchair in GlobalVars.ArmchairsNode.GetChildren().Cast<Armchair>())
+        foreach (var armchair in GlobalVars.ArmchairsNode.GetChildren().OfType<Armchair>())
         {
             armchair.UpdatedIsFreeFlag += OnUpdatedIsFreeFlag;
             armchair.ChangeFreeFlagTo(true);

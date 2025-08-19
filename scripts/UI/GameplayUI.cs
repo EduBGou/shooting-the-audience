@@ -14,6 +14,6 @@ public partial class GameplayUI : Control
 
     private void OnCoinAmountChanged()
     {
-        CoinsLabel.Text = $"Coins: {GlobalVars.Coins}";
+        CoinsLabel.Text = $"Pnts: {GlobalVars.Coins}";
     }
 }

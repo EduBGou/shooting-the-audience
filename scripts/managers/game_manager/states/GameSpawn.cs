@@ -6,6 +6,6 @@ public partial class GameSpawn : GameState
     public override void Enter()
     {
         base.Enter();
-        Spawner.Spawn(GlobalVars.CreaturesNode, 5);
+        Spawner.Spawn(GlobalVars.CreaturesNode, 10);
     }
 }
